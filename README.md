@@ -44,19 +44,3 @@ Aqui está o código do README.md com a terminologia técnica correta, mantendo 
 | **React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação. |
 | **PostgreSQL** | Database | Banco relacional noSQL |
 | **Jest + Supertest** | QA | TDD padrão para garantir a confiabilidade do sistema. |
-
----
-
-## 3. Fluxo da Transação (Lógica de Negócio)
-
-```mermaid
-graph TD
-    A[Request: Close Ticket] --> B{Auth & Validation}
-    B -- Unauthorized --> C[Error 401/400]
-    B -- Authorized --> D[Begin Transaction]
-    D --> E[Update: Ticket Status to Resolved]
-    E --> F[Insert: TicketHistory Entry]
-    F -- Exception --> G[Rollback Transaction]
-    G --> H[Log Error & Response 500]
-    F -- Success --> I[Commit Transaction]
-    I --> J[Response 200 OK]
