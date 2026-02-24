@@ -1,11 +1,11 @@
 # 🚀 LinkSafe: Gerenciador de Links Acadêmicos
 
-Repositório destinado à disciplina, com foco em **TDD**, **CI/CD**, **Observabilidade** e **Integridade de Dados**.
+Repositório destinado à disciplina de Programação Web, com foco em **TDD**, **CI/CD**, **Observabilidade** e **Integridade de Dados**.
 
 ---
 
 ## 1. Domínio do Problema
-O **LinkSafe** é uma ferramenta de curadoria de conteúdo acadêmico que vai além do simples armazenamento de favoritos. O sistema garante a validade das referências salvas, permite organização multidimensional via tags e assegura a integridade das operações através de transações SQL.
+O **LinkSafe** é uma aplicação enxuta para centralizar referências de estudo. O objetivo é resolver a dispersão de materiais (artigos, vídeos, repositórios) durante o semestre letivo, permitindo salvar URLs, categorizá-las e marcar o progresso de leitura
 
 ### Requisitos Funcionais (RF)
 * **RF01 - CRUD de Links com Validação:** Criar, ler, atualizar e excluir links. 
