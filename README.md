@@ -1,27 +1,19 @@
-# 🛠️ TI-Ticket: Enterprise Grade Help Desk System
+# TI-Ticket
 
 Este repositório contém uma aplicação robusta de gerenciamento de chamados técnicos, desenvolvida sob os pilares da **Engenharia de Software Moderna**: Testes Rigorosos (TDD), Entrega Contínua (CI/CD) e Monitoramento de Saúde (Observabilidade).
 
 ---
 
-## 1. 🎯 Problema
+## 1. Problema
 Em qualquer setor de TI, o maior caos é quando os pedidos chegam por todos os lados (WhatsApp, e-mail, corredor) e ninguém sabe quem está fazendo o quê. Pior ainda é quando um chamado é "fechado", mas ninguém anotou o que foi feito para resolver. O **TI-Ticket** organiza essa bagunça. Ele garante que cada chamado tenha um dono e que, na hora de encerrar o problema, o sistema salve o status e a explicação técnica ao mesmo tempo. Se um falhar, o outro não acontece (isso é a nossa **transação**), evitando que o chamado suma sem deixar rastro.
 
 Entendido. Se o objetivo é apresentar este projeto para uma banca acadêmica ou incluir no seu portfólio profissional, precisamos de uma linguagem técnica precisa, focada em Engenharia de Software e Padrões de Projeto.
 
 Aqui está o código do README.md com a terminologia técnica correta, mantendo todos os requisitos que definimos:
 
-Markdown
-# 🛠️ IT-Ticket: Help Desk Management System
-
-Aplicação Fullstack voltada à gestão de chamados técnicos, desenvolvida como prova de conceito para a aplicação de **Test Driven Development (TDD)**, **Sistemas Transacionais** e **Arquitetura de Software Robusta**.
-
 ---
 
-## 1. 🎯 Domínio e Justificativa
-Em infraestruturas de TI, a integridade dos dados e a rastreabilidade de incidentes são críticas. O **IT-Ticket** soluciona a fragmentação de processos de suporte através de um fluxo de estados controlado, onde cada transição de status é protegida por garantias **ACID**, assegurando que nenhuma movimentação de chamado ocorra sem o devido registro de auditoria.
-
-### 🛠️ Requisitos Funcionais (RF)
+### Requisitos Funcionais (RF)
 * **RF01 - Ciclo de Vida do Ticket (CRUD):** Persistência completa de incidentes, incluindo metadados de Título, Descrição, Nível de Severidade e Status.
 * **RF02 - Gestão de Operações Técnicas:**
     * **Atribuição (Ownership):** Funcionalidade para que o técnico assuma a responsabilidade pelo ticket, realizando a transição de estado para "Em Atendimento".
@@ -35,7 +27,7 @@ Em infraestruturas de TI, a integridade dos dados e a rastreabilidade de inciden
 * **RF05 - Protocolo de Reabertura:** Restrição de reabertura de chamados condicionado à inserção de justificativa técnica (mín. 20 caracteres), validada em camada de serviço.
 * **RF06 - Dashboard Analítico:** Interface para filtragem multidimensional (prioridade, técnico, período) e busca full-text.
 
-### 🛡️ Requisitos Não Funcionais (RNF)
+### Requisitos Não Funcionais (RNF)
 * **RNF01 - Qualidade de Código (TDD):** Desenvolvimento orientado a testes com foco em testes de integração para validar a consistência do banco de dados.
 * **RNF02 - Entrega Contínua (CI/CD):** Pipeline automatizado via **GitHub Actions** para validação de build e execução de testes em cada integração.
 * **RNF03 - Observabilidade:** Logging estruturado para monitoramento de exceções e telemetria básica de performance da API.
@@ -44,7 +36,7 @@ Em infraestruturas de TI, a integridade dos dados e a rastreabilidade de inciden
 
 ---
 
-## 2. 🧰 Stack Tecnológica e Arquitetura
+## 2. Stack Tecnológica e Arquitetura
 
 | Tecnologia | Função | Justificativa |
 | :--- | :--- | :--- |
@@ -55,7 +47,7 @@ Em infraestruturas de TI, a integridade dos dados e a rastreabilidade de inciden
 
 ---
 
-## 3. 📊 Fluxo da Transação (Lógica de Negócio)
+## 3. Fluxo da Transação (Lógica de Negócio)
 
 ```mermaid
 graph TD
