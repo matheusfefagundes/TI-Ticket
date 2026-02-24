@@ -1,4 +1,4 @@
-# 🚀 LinkSafe: Gerenciador de Links Acadêmicos (Pro)
+# 🚀 LinkSafe: Gerenciador de Links Acadêmicos
 
 Repositório destinado à disciplina, com foco em **TDD**, **CI/CD**, **Observabilidade** e **Integridade de Dados**.
 
