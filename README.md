@@ -5,11 +5,7 @@ Este repositório contém uma aplicação robusta de gerenciamento de chamados t
 ---
 
 ## 1. Problema
-Em qualquer setor de TI, o maior caos é quando os pedidos chegam por todos os lados (WhatsApp, e-mail, corredor) e ninguém sabe quem está fazendo o quê. Pior ainda é quando um chamado é "fechado", mas ninguém anotou o que foi feito para resolver. O **TI-Ticket** organiza essa bagunça. Ele garante que cada chamado tenha um dono e que, na hora de encerrar o problema, o sistema salve o status e a explicação técnica ao mesmo tempo. Se um falhar, o outro não acontece (isso é a nossa **transação**), evitando que o chamado suma sem deixar rastro.
-
-Entendido. Se o objetivo é apresentar este projeto para uma banca acadêmica ou incluir no seu portfólio profissional, precisamos de uma linguagem técnica precisa, focada em Engenharia de Software e Padrões de Projeto.
-
-Aqui está o código do README.md com a terminologia técnica correta, mantendo todos os requisitos que definimos:
+Em qualquer setor de TI, o maior caos é quando os pedidos chegam por todos os lados (WhatsApp, e-mail, corredor) e ninguém sabe quem está fazendo o quê. Pior ainda é quando um chamado é "fechado", mas ninguém anotou o que foi feito para resolver. O **TI-Ticket** organiza essa bagunça. Ele garante que cada chamado tenha um dono e que, na hora de encerrar o problema, o sistema salve o status e a explicação técnica ao mesmo tempo.
 
 ---
 
