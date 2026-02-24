@@ -38,5 +38,5 @@ Em qualquer setor de TI, o maior caos é quando os pedidos chegam por todos os l
 | :--- | :--- | :--- |
 | **Node.js + Express** | Backend | Alta performance para requisições assíncronas e facilidade com JSON. |
 | **React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação. |
-| **PostgreSQL** | Database | Banco relacional noSQL |
+| **PostgreSQL** | Database | Banco relacional |
 | **Jest + Supertest** | QA | TDD padrão para garantir a confiabilidade do sistema. |
