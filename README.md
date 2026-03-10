@@ -40,3 +40,6 @@ Em qualquer setor de TI, o maior caos é quando os pedidos chegam por todos os l
 | **React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação. |
 | **PostgreSQL** | Database | Banco relacional |
 | **Jest + Supertest** | QA | TDD padrão para garantir a confiabilidade do sistema. |
+
+## 3. Figma
+Link: https://www.figma.com/design/ytKkT3vD3ScdnTQd3tn92s/TI-Ticket?node-id=3-376&t=APlxH9cPtzP2yzQS-1

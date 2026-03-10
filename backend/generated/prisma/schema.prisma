@@ -1,0 +1,175 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  technical
+  admin
+  client
+}
+
+enum TicketStatus {
+  open
+  inAttendance @map("in_attendance")
+  closed
+}
+
+enum ServiceStatus {
+  active
+  disabled
+}
+
+model User {
+  id            String    @id @default(uuid())
+  name          String
+  email         String    @unique
+  password      String?
+  avatarUrl     String?   @map("avatar_url")
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+
+  role UserRole @default(client)
+
+  ticketAsClient     Ticket[] @relation("ClientTickets")
+  ticketAsTechnician Ticket[] @relation("TechnicianTickets")
+
+  isActive Boolean @default(true) @map("is_active")
+
+  availabilities TechnicianAvailability[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model TechnicianAvailability {
+  id           String   @id @default(uuid())
+  technicianId String   @map("technician_id")
+  schedules    String[]
+
+  technician User @relation(fields: [technicianId], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("technician_availabilities")
+}
+
+model Service {
+  id          String @id @default(uuid())
+  title       String
+  description String?
+  price       Float
+
+  isActive ServiceStatus @default(active) @map("is_active")
+
+  ticketServices TicketService[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("services")
+}
+
+model Ticket {
+  id           Int    @id @default(autoincrement())
+  title        String
+  description  String
+  clientId     String @map("client_id")
+  technicianId String @map("technician_id")
+
+  status TicketStatus @default(open)
+
+  client     User @relation("ClientTickets", fields: [clientId], references: [id], onDelete: Cascade)
+  technician User @relation("TechnicianTickets", fields: [technicianId], references: [id])
+
+  ticketServices TicketService[]
+
+  openedAt DateTime  @default(now()) @map("opened_at")
+  closedAt DateTime? @map("closed_at")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("tickets")
+}
+
+model TicketService {
+  id            String @id @default(uuid())
+  ticketId      Int    @map("ticket_id")
+  serviceId     String @map("service_id")
+  priceSnapshot Float  @map("price_snapshot")
+
+  ticket  Ticket  @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@map("ticket_services")
+}
+
+model Account {
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Authenticator {
+  credentialID         String  @unique @map("credential_id")
+  userId               String  @map("user_id")
+  providerAccountId    String  @map("provider_account_id")
+  credentialPublicKey  String  @map("credential_public_key")
+  counter              Int
+  credentialDeviceType String  @map("credential_device_type")
+  credentialBackedUp   Boolean @map("credential_backed_up")
+  transports           String?
+
+  @@id([userId, credentialID])
+  @@map("authenticators")
+}
