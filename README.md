@@ -43,3 +43,6 @@ Em qualquer setor de TI, o maior caos é quando os pedidos chegam por todos os l
 
 ## 3. Figma
 Link: https://www.figma.com/design/ytKkT3vD3ScdnTQd3tn92s/TI-Ticket?node-id=3-376&t=APlxH9cPtzP2yzQS-1
+
+## 4. Arquitetura em modelo C4
+Link: https://drive.google.com/file/d/12UFDJGtZjd4XiIr9VKD7OCmJhAV-T4Y7/view?usp=sharing
