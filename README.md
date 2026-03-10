@@ -7,6 +7,7 @@ Este repositório contém uma aplicação robusta de gerenciamento de chamados t
 ## 1. Problema
 
 Em setores de Tecnologia da Informação, é comum que solicitações cheguem por diferentes canais, como WhatsApp, e-mail ou comunicação informal, dificultando o controle e a definição de responsáveis. A situação se agrava quando chamados são encerrados sem registro das ações realizadas. O TI-Ticket organiza esse processo ao garantir que cada chamado tenha um responsável e que, ao ser finalizado, sejam registrados o status e a descrição técnica da solução aplicada.
+
 ---
 
 ### Requisitos Funcionais (RF)
