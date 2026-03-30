@@ -1,49 +1,36 @@
-# TI-Ticket
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Este repositório contém uma aplicação robusta de gerenciamento de chamados técnicos, desenvolvida sob os pilares da **Engenharia de Software Moderna**: Testes Rigorosos (TDD), Entrega Contínua (CI/CD) e Monitoramento de Saúde (Observabilidade).
+## Getting Started
 
----
+First, run the development server:
 
-## 1. Problema
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Em setores de Tecnologia da Informação, é comum que solicitações cheguem por diferentes canais, como WhatsApp, e-mail ou comunicação informal, dificultando o controle e a definição de responsáveis. A situação se agrava quando chamados são encerrados sem registro das ações realizadas. O TI-Ticket organiza esse processo ao garantir que cada chamado tenha um responsável e que, ao ser finalizado, sejam registrados o status e a descrição técnica da solução aplicada.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Requisitos Funcionais (RF)
-* **RF01 - Ciclo de Vida do Ticket (CRUD):** Persistência completa de incidentes, incluindo metadados de Título, Descrição, Nível de Severidade e Status.
-* **RF02 - Gestão de Operações Técnicas:**
-    * **Atribuição (Ownership):** Funcionalidade para que o técnico assuma a responsabilidade pelo ticket, realizando a transição de estado para "Em Atendimento".
-    * **Delegamento:** Capacidade de transferência de tickets entre membros da equipe técnica.
-    * **Registros de Evolução:** Inserção de notas técnicas incrementais para documentar o progresso da resolução.
-* **RF03 - Transação de Encerramento :** Implementação de bloco transacional que garante a execução simultânea de:
-    1. **Update**: Alteração do status do ticket para 'Concluído'.
-    2. **Insert**: Registro obrigatório do diagnóstico na tabela de `TicketHistory`.
-    *Mecanismo de Segurança: Falhas na escrita do histórico disparam Rollback imediato no status do ticket.*
-* **RF04 - Gestão de Acordo de Nível de Serviço:** Cálculo dinâmico do tempo limite de resolução baseado na matriz de prioridade (Ex: Alta: 4h | Baixa: 24h).
-* **RF05 - Protocolo de Reabertura:** Restrição de reabertura de chamados condicionado à inserção de justificativa técnica (mín. 20 caracteres), validada em camada de serviço.
-* **RF06 - Dashboard Analítico:** Interface para filtragem multidimensional (prioridade, técnico, período) e busca full-text.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Requisitos Não Funcionais (RNF)
-* **RNF01 - Qualidade de Código (TDD):** Desenvolvimento orientado a testes com foco em testes de integração para validar a consistência do banco de dados.
-* **RNF02 - Entrega Contínua (CI/CD):** Pipeline automatizado via **GitHub Actions** para validação de build e execução de testes em cada integração.
-* **RNF03 - Observabilidade:** Logging estruturado para monitoramento de exceções e telemetria básica de performance da API.
-* **RNF04 - Segurança e Autenticação:** Controle de acesso baseado em **JWT** e implementação de middlewares para sanitização contra SQL Injection.
-* **RNF05 - Idempotência de API:** Garantia de que múltiplas requisições para a mesma operação de fechamento não resultem em registros duplicados.
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-## 2. Stack Tecnológica e Arquitetura
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-| Tecnologia | Função | Justificativa |
-| :--- | :--- | :--- |
-| **Node.js + Express** | Backend | Alta performance para requisições assíncronas e facilidade com JSON. |
-| **React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação. |
-| **PostgreSQL** | Database | Banco relacional |
-| **Jest + Supertest** | QA | TDD padrão para garantir a confiabilidade do sistema. |
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 3. Figma
-Link: https://www.figma.com/design/ytKkT3vD3ScdnTQd3tn92s/TI-Ticket?node-id=3-376&t=APlxH9cPtzP2yzQS-1
+## Deploy on Vercel
 
-## 4. Arquitetura em modelo C4
-Link: https://drive.google.com/file/d/1vi-eh6cBhEFWXt6OFQ5I4o2v4EotGX8H/view?usp=sharing
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
