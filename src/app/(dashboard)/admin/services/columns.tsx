@@ -1,9 +1,9 @@
 "use client";
 
-import { ServiceDisable } from "@/components/DisableService";
-import { PopupService } from "@/components/PopupService";
-import { Button } from "@/components/ui/button";
-import { statusServiceMap } from "@/utils/status-service";
+import { ServiceDisable } from "../../../../components/DisableService";
+import { PopupService } from "../../../../components/PopupService";
+import { Button } from "../../../../components/ui/button";
+import { statusServiceMap } from "../../../../utils/status-service";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 

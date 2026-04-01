@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import { NavLinks } from "./NavLinks";
 import { ProfileOptions } from "./ProfileOptions";
 import { AppHeader } from "./AppHeader";
-import { useToggleMenu } from "@/hooks/useToggleMenu";
+import { useToggleMenu } from "../hooks/useToggleMenu";
 import { useRef } from "react";
 import { useSession } from "next-auth/react";
 import { InitialsAvatar } from "./InitialsAvatar";

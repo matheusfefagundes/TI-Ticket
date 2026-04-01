@@ -15,7 +15,7 @@ export function AppHeader() {
         height={44}
       />
       <div>
-        <h2 className="text-app-gray-600 text-[20px] font-bold">HelpDesk</h2>
+        <h2 className="text-app-gray-600 text-[20px] font-bold">TI-Ticket</h2>
         <p className="text-brand-light text-[10px] font-bold uppercase">
           {data?.user.role}
         </p>

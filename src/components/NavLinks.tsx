@@ -1,10 +1,10 @@
 "use client";
 
-import { menuListByRole } from "@/utils/menuListByRole";
+import { menuListByRole } from "../utils/menuListByRole";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/classMerge";
+import { cn } from "../lib/classMerge";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 

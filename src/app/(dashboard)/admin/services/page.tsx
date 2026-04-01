@@ -1,7 +1,7 @@
-import { DataTable } from "@/components/DataTable";
-import { PageContainer } from "@/components/PageContainer";
+import { DataTable } from "../../../../components/DataTable";
+import { PageContainer } from "../../../../components/PageContainer";
 import { columns, ServicesRow } from "./columns";
-import { GetServices } from "@/actions/GetServices";
+import { GetServices } from "../../../../actions/GetServices";
 
 export default async function ServicesPage() {
   const services = await GetServices();

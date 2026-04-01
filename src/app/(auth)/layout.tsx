@@ -19,7 +19,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             width={40}
             className="object-cover"
           />
-          <h2 className="text-brand-dark text-xl font-bold">HelpDesk</h2>
+          <h2 className="text-brand-dark text-xl font-bold">TI-Ticket</h2>
         </div>
         {children}
       </div>

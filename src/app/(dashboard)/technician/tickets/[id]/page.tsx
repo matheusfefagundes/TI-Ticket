@@ -1,7 +1,7 @@
 import { GetTicketUnique } from "../../../../../actions/GetTicketUnique";
-import { TicketDetailsProps } from "@/app/(dashboard)/portal/tickets/ticket-details/[id]/page";
-import { AdditionalServicesCard } from "@/components/AdditionalServicesCard";
-import { TicketDetails } from "@/components/TicketDetails";
+import { TicketDetailsProps } from "../../../portal/tickets/ticket-details/[id]/page";
+import { AdditionalServicesCard } from "../../../../../components/AdditionalServicesCard";
+import { TicketDetails } from "../../../../../components/TicketDetails";
 
 export default async function TicketsDetailsPage({
   params,

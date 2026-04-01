@@ -11,7 +11,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Help Desk",
+  title: "TI-Ticket",
 };
 
 export default function RootLayout({

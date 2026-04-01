@@ -1,7 +1,7 @@
-import { TicketsTable, TicketRow } from "../../../../../../HelpDesk/help-desk/src/components/TicketsColumns";
-import { DataTable } from "../../../../../../HelpDesk/help-desk/src/components/DataTable";
-import { GetAllTickets } from "@/actions/GetAllTickets";
-import { PageContainer } from "@/components/PageContainer";
+import { TicketsTable, TicketRow } from "../../../../components/TicketsColumns";
+import { DataTable } from "../../../../components/DataTable";
+import { GetAllTickets } from "../../../../actions/GetAllTickets";
+import { PageContainer } from "../../../../components/PageContainer";
 
 export default async function TicketsPage() {
   const tickets = await GetAllTickets();
