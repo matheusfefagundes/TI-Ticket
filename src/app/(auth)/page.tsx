@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 
-import { Form } from "../../components/Form";
-import { Button } from "../../components/ui/button";
-import { Field, FieldLabel } from "../../components/ui/field";
-import { Input } from "../../components/ui/input";
+import { Form } from "@/components/Form";
+import { Button } from "@/components/ui/button";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, SignInFormData } from "../../schemas/login";
-import { useLogin } from "../../hooks/useLogin";
+import { loginSchema, SignInFormData } from "@/schemas/login";
+import { useLogin } from "@/hooks/useLogin";
 
 export default function LoginPage() {
   const { loginAction } = useLogin();
