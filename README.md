@@ -38,7 +38,7 @@ Em setores de Tecnologia da Informação, é comum que solicitações cheguem po
 | Tecnologia | Função | Justificativa |
 | :--- | :--- | :--- |
 | **Node.js + Express** | Backend | Alta performance para requisições assíncronas e facilidade com JSON. |
-| **React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação. |
+| **Next.js + React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação. |
 | **PostgreSQL** | Database | Banco relacional |
 | **Jest + Supertest** | QA | TDD padrão para garantir a confiabilidade do sistema. |
 

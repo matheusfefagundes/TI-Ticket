@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="relative h-screen w-full pt-8 lg:grid lg:grid-cols-2">
-      <Image
+      <Image 
         src="/Login_Background.png"
         fill
         alt="Imagem de fundo"
