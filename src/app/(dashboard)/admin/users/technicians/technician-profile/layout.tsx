@@ -1,8 +1,8 @@
 "use client";
 
-import { BackBottom } from "../../../../../../components/BackBottom";
-import { Button } from "../../../../../../components/ui/button";
-import { useTechnicianProfile } from "../../../../../../hooks/useTechnicianProfile";
+import { BackBottom } from "@/components/BackBottom";
+import { Button } from "@/components/ui/button";
+import { useTechnicianProfile } from "@/hooks/useTechnicianProfile";
 import { ReactNode } from "react";
 import { FormProvider } from "react-hook-form";
 

@@ -1,4 +1,4 @@
-import { TicketDetails } from "../../../../../../components/TicketDetails";
+import { TicketDetails } from "@/components/TicketDetails";
 
 export interface TicketDetailsProps {
   params: Promise<{ id: string }>;

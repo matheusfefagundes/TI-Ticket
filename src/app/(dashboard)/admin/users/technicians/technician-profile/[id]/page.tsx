@@ -1,5 +1,5 @@
-import { TechnicianAvailability } from "../../../../../../../components/TechnicianAvailability";
-import { TechnicianPersonalData } from "../../../../../../../components/TechnicianPersonalData";
+import { TechnicianAvailability } from "@/components/TechnicianAvailability";
+import { TechnicianPersonalData } from "@/components/TechnicianPersonalData";
 
 export default function TechnicianProfile() {
   return (

@@ -1,11 +1,11 @@
 "use client";
 
-import { Form } from "../../../../components/Form";
-import { NewTicketInfo } from "../../../../components/NewTicketInfo";
-import { PageContainer } from "../../../../components/PageContainer";
-import { TicketSummary } from "../../../../components/TicketSummary";
-import { useNewTicket } from "../../../../hooks/useNewTicket";
-import { NewTicketData, newTicketSchema } from "../../../../schemas/new-ticket";
+import { Form } from "@/components/Form";
+import { NewTicketInfo } from "@/components/NewTicketInfo";
+import { PageContainer } from "@/components/PageContainer";
+import { TicketSummary } from "@/components/TicketSummary";
+import { useNewTicket } from "@/hooks/useNewTicket";
+import { NewTicketData, newTicketSchema } from "@/schemas/new-ticket";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 

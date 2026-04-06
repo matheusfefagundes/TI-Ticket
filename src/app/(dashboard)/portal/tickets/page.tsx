@@ -1,8 +1,8 @@
-import { PageContainer } from "../../../../components/PageContainer";
-import { TicketsTable, TicketRow } from "../../../../components/TicketsColumns";
-import { GetAllTickets } from "../../../../actions/GetAllTickets";
+import { PageContainer } from "@/components/PageContainer";
+import { TicketsTable, TicketRow } from "@/components/TicketsColumns";
+import { GetAllTickets } from "@/actions/GetAllTickets";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../lib/auth";
+import { authOptions } from "@/lib/auth";
 
 export default async function ClientPage() {
   const session = await getServerSession(authOptions);
