@@ -3,10 +3,12 @@
 import { menuListByRole } from "@/utils/menuListByRole";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo } from "react";
 import { cn } from "@/lib/classMerge";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import { Session } from "next-auth";
 
 interface NavLinkProps {
   onClose?: () => void;
@@ -14,9 +16,22 @@ interface NavLinkProps {
 }
 
 export function NavLinks({ onClose, title }: NavLinkProps) {
-  const [activeLabel, setActiveLabel] = useState<string | null>(null);
+  const pathname = usePathname();
+  const { data: sessionData } = useSession();
 
-  const session = useSession();
+  const session = sessionData as (Session & { user: { role: string } }) | null;
+
+  const activeLabel = useMemo(() => {
+    if (!session?.user?.role) return null;
+
+    const currentMenuItems =
+      menuListByRole[session.user.role as keyof typeof menuListByRole];
+    const activeItem = currentMenuItems?.find((item) =>
+      pathname.startsWith(item.path),
+    );
+
+    return activeItem?.label ?? null;
+  }, [pathname, session?.user?.role]);
 
   const handleClick = () => {
     if (onClose) {
@@ -24,7 +39,10 @@ export function NavLinks({ onClose, title }: NavLinkProps) {
     }
   };
 
-  if (!session.data?.user.role) return null;
+  if (!session?.user?.role) return null;
+
+  const menuItems =
+    menuListByRole[session.user.role as keyof typeof menuListByRole];
 
   return (
     <>
@@ -33,7 +51,7 @@ export function NavLinks({ onClose, title }: NavLinkProps) {
           {title}
         </h3>
       )}
-      {menuListByRole[session.data.user.role].map((user) => (
+      {menuItems?.map((user) => (
         <Button
           className={cn([
             "flex items-center justify-start gap-3 p-3 text-start text-sm",
@@ -43,10 +61,7 @@ export function NavLinks({ onClose, title }: NavLinkProps) {
           ])}
           variant={activeLabel === user.label ? "secondary" : "ghost"}
           key={user.label}
-          onClick={() => {
-            setActiveLabel(user.label);
-            handleClick();
-          }}
+          onClick={handleClick}
           asChild
         >
           <Link href={user.path}>
