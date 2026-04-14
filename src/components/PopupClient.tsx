@@ -36,7 +36,7 @@ export function PopupClient({ name, userId, email }: PopupClientProps) {
     <Dialog>
       <FormProvider {...methods}>
         <DialogTrigger asChild>
-          <Button size="icon-sm" variant="ghost" className="bg-app-gray-500">
+          <Button size="icon-sm" variant="ghost" className="bg-app-gray-500 hover:bg-app-gray-400 transition-colors">
             <Image
               src="/icons/pen-line.svg"
               alt="Ícone de lápis"

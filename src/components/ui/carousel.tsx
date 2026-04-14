@@ -185,7 +185,7 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 rounded-full",
+        "absolute size-8 rounded-full hover:bg-app-gray-400 transition-colors",
         orientation === "horizontal" && "bottom-0 left-[35%]",
         className,
       )}
@@ -213,7 +213,7 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        "absolute size-8 rounded-full",
+        "absolute size-8 rounded-full hover:bg-app-gray-400 transition-colors",
         orientation === "horizontal" && "right-[35%] bottom-0",
         className,
       )}

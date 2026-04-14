@@ -57,7 +57,7 @@ export function NavLinks({ onClose, title }: NavLinkProps) {
             "flex items-center justify-start gap-3 p-3 text-start text-sm",
             activeLabel === user.label
               ? "text-app-gray-600"
-              : "text-app-gray-400",
+              : "text-app-gray-400 hover:bg-white/5",
           ])}
           variant={activeLabel === user.label ? "secondary" : "ghost"}
           key={user.label}

@@ -1,4 +1,4 @@
-import { ServiceStatus } from "../generated/prisma/enums";
+import { ServiceStatus } from "@/generated/prisma/enums";
 
 type StatusServiceConfig = {
   label: string;

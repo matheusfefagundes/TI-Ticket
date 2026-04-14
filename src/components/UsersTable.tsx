@@ -102,7 +102,7 @@ export function UsersTable({ data }: UsersTableProps) {
               <Button
                 size="icon-sm"
                 variant="ghost"
-                className="bg-app-gray-500"
+                className="bg-app-gray-500 hover:bg-app-gray-400 transition-colors"
                 asChild
               >
                 <Link

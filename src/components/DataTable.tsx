@@ -102,6 +102,7 @@ export function DataTable<TData, TValue>({
         <Button
           variant="outline"
           size="sm"
+          className="hover:bg-app-gray-400 transition-colors"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
@@ -110,6 +111,7 @@ export function DataTable<TData, TValue>({
         <Button
           variant="outline"
           size="sm"
+          className="hover:bg-app-gray-400 transition-colors"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >

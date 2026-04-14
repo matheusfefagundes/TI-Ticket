@@ -1,4 +1,4 @@
-import { TicketStatus } from "../generated/prisma/enums";
+import { TicketStatus } from "@/generated/prisma/enums";
 
 type StatusConfig = {
   icon: string;

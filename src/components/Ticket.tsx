@@ -49,7 +49,7 @@ export async function Tickets({ data }: TicketsProps) {
                       <Button
                         variant="ghost"
                         size="icon-sm"
-                        className="bg-app-gray-500 rounded-lg"
+                        className="bg-app-gray-500 rounded-lg hover:bg-app-gray-400 transition-colors"
                         asChild
                       >
                         <Link href={`/technician/tickets/${ticket.id}`}>

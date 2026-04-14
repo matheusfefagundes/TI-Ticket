@@ -85,7 +85,7 @@ export const columns: ColumnDef<ServicesRow>[] = [
             price={row.original.price}
           >
             <Button
-              className="bg-app-gray-500 h-7 w-7 rounded-lg p-2"
+              className="bg-app-gray-500 h-7 w-7 rounded-lg p-2 hover:bg-app-gray-400 transition-colors"
               variant="ghost"
               asChild
             >
