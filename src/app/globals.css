@@ -18,6 +18,7 @@
   --color-feedback-danger: #D03E3E;
   --color-feedback-open: #CC3D6A;
   --color-feedback-progress: #355EC5;
+  --color-feedbak-warning: #EAB308;
   --color-feedback-done: #508B26;
 
   --leading-default: 140%;
@@ -33,4 +34,28 @@
 
   --color-outline: var(--color-app-gray-500);
   --color-outline-foreground: #000000;
+}
+
+[data-sonner-toast][data-type="success"] {
+  background-color: var(--color-feedback-done) !important;
+  color: white !important;
+  border: none !important;
+}
+
+[data-sonner-toast][data-type="error"] {
+  background-color: var(--color-feedback-danger) !important;
+  color: white !important;
+  border: none !important;
+}
+
+[data-sonner-toast][data-type="info"] {
+  background-color: var(--color-feedback-progress) !important;
+  color: white !important;
+  border: none !important;
+}
+
+[data-sonner-toast][data-type="warning"] {
+  background-color: var(--color-feedbak-warning) !important;
+  color: white !important;
+  border: none !important;
 }

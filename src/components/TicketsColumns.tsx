@@ -7,7 +7,7 @@ import { TicketStatus } from "@/generated/prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { statusMap } from "@/utils/status-ticket";
 import Image from "next/image";
-import { Button } from "../components/ui/button";
+import { Button } from "./ui/button";
 import Link from "next/link";
 import { DataTable } from "@/components/DataTable";
 import { useIsRoute } from "@/hooks/useIsRoute";

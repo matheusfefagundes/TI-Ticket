@@ -20,6 +20,8 @@ export function useLogin() {
         return;
       }
 
+      toast.success("Login realizado com sucesso!");
+
       // Aguarda um pouco para a sessão ser atualizada
       await new Promise((resolve) => setTimeout(resolve, 500));
 

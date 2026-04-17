@@ -1,8 +1,11 @@
+"use client"; 
+
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { statusServiceMap } from "@/utils/status-service";
 import { ServiceStatus } from "@/generated/prisma/enums";
 import { DisableService } from "@/actions/DisableService";
+import { toast } from "sonner";
 
 interface ServiceDisableProps {
   isActive: ServiceStatus;
@@ -12,7 +15,15 @@ interface ServiceDisableProps {
 export function ServiceDisable({ isActive, serviceId }: ServiceDisableProps) {
   const status = statusServiceMap[isActive];
 
-  const disableService = async () => await DisableService({ serviceId });
+  const disableService = async () => {
+    try {
+      await DisableService({ serviceId });
+      toast.success("Status do serviço atualizado com sucesso!"); 
+    } catch (error) {
+      console.error(error);
+      toast.error("Não foi possível alterar o status do serviço.");
+    }
+  };
 
   return (
     <Button
