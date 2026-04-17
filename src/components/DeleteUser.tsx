@@ -28,7 +28,7 @@ export function DeleteUser({ name, userId }: DeleteUserProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="icon-sm" variant="ghost" className="bg-app-gray-500">
+        <Button size="icon-sm" variant="ghost" className="bg-app-gray-500 rounded-lg hover:bg-app-gray-400 transition-colors">
           <Image
             src="/icons/trash.svg"
             alt="Ícone de lixeira"

@@ -16,6 +16,7 @@ export function DeleteService({
     <Button
       variant="outline"
       size="icon-sm"
+      className="bg-app-gray-500 rounded-lg hover:bg-app-gray-400 transition-colors"
       onClick={() => onDelete({ serviceId, ticketId, ticketServiceId })}
     >
       <Image

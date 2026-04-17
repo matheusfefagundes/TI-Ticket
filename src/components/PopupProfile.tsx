@@ -65,8 +65,8 @@ export function PopupProfile({
                 <div className="flex items-center gap-1">
                   <div className="relative">
                     <FieldLabel
-                      htmlFor="upload"
-                      className="text-app-gray-200 bg-app-gray-500 block w-full cursor-pointer rounded py-2.5 pr-2 pl-8 text-xs font-bold"
+                      htmlFor="upload"  
+                      className="text-app-gray-200 bg-app-gray-500 block w-full cursor-pointer rounded py-2.5 pr-2 pl-8 text-xs font-bold hover:bg-app-gray-400 transition-colors"
                     >
                       Nova imagem
                     </FieldLabel>
@@ -88,6 +88,7 @@ export function PopupProfile({
                   <Button
                     variant="outline"
                     size="icon"
+                    className="bg-app-gray-500 rounded-lg hover:bg-app-gray-400 transition-colors"
                     onClick={handleDeleteImage}
                   >
                     <Image
