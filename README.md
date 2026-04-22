@@ -50,7 +50,7 @@ Link: https://www.figma.com/design/ytKkT3vD3ScdnTQd3tn92s/TI-Ticket?node-id=3-37
 
 ## 4. Arquitetura em modelo C4
 
-Link: https://drive.google.com/file/d/1vi-eh6cBhEFWXt6OFQ5I4o2v4EotGX8H/view?usp=sharing
+Link: https://drive.google.com/file/d/102q4oNUW_oZW1USY7wMFsnwwLiVhCBxk/view?usp=sharing
 
 ## 5. Como Executar o Projeto Localmente
 
