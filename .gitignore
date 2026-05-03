@@ -12,7 +12,8 @@
 !.yarn/versions
 
 # testing
-/coverage
+/coverage/
+.jest/
 
 # next.js
 /.next/
@@ -58,3 +59,4 @@ src/generated/
 
 # caches
 .cache/
+.eslintcache
