@@ -28,12 +28,12 @@ export default function TechnicianProfileLayout({
               </h1>
             </div>
             <div className="mt-3 flex gap-2">
-              <Button variant="outline" type="button" className="flex-1">
+              <Button variant="outline" type="button" className="flex-1 hover:bg-app-gray-400 transition-colors" >
                 Cancelar
               </Button>
               <Button
                 type="submit"
-                className="flex-1"
+                className="flex-1  hover:bg-app-gray-400 transition-colors"
                 disabled={methods.formState.isSubmitting}
               >
                 {methods.formState.isSubmitting ? "Salvando..." : "Salvar"}
