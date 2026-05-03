@@ -1,11 +1,11 @@
-import { GetAllTickets } from "../../../../actions/GetAllTickets";
-import { PageContainer } from "../../../../components/PageContainer";
-import { TicketStatus } from "../../../../generated/prisma/enums";
-import { statusMap } from "../../../../utils/status-ticket";
+import { GetAllTickets } from "@/actions/GetAllTickets";
+import { PageContainer } from "@/components/PageContainer";
+import { TicketStatus } from "@/generated/prisma/enums";
+import { statusMap } from "@/utils/status-ticket";
 import Image from "next/image";
-import { Tickets } from "../../../../components/Ticket";
+import { Tickets } from "@/components/Ticket";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../lib/auth";
+import { authOptions } from "@/lib/auth";
 
 export default async function TicketsPage() {
   const session = await getServerSession(authOptions);

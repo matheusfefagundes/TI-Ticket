@@ -1,6 +1,6 @@
-import { MobileHeader } from "../../components/MobileHeader";
-import { Sidebar } from "../../components/Sidebar";
-import { authOptions } from "../../lib/auth";
+import { MobileHeader } from "@/components/MobileHeader";
+import { Sidebar } from "@/components/Sidebar";
+import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { ReactNode } from "react";
 
