@@ -1,5 +1,4 @@
-import { DefaultSession } from "next-auth";
-import { UserRole } from "@/generated/prisma/enums";
+import { UserRole } from "../generated/prisma/enums";
 
 declare module "next-auth" {
   interface User {
@@ -10,7 +9,10 @@ declare module "next-auth" {
     user: {
       id: string;
       role: UserRole;
-    } & DefaultSession["user"];
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+    };
   }
 }
 
