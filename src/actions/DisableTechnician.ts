@@ -16,9 +16,10 @@ export const DisableTechnician = async ({ userId }: DisableTechnicianProps) => {
   });
 
   if (!user || user.role !== UserRole.technical) {
-    throw new Error(
-      "Usuário não encontrado ou não possui cargo para ser desativado.",
-    );
+    return {
+      success: false,
+      error: "Usuário não encontrado ou não possui cargo para ser desativado.",
+    };
   }
 
   const linkedTicketsCount = await prisma.ticket.count({
@@ -31,9 +32,10 @@ export const DisableTechnician = async ({ userId }: DisableTechnicianProps) => {
   });
 
   if (linkedTicketsCount > 0) {
-    throw new Error(
-      `Não é possível desativar este técnico. Existem ${linkedTicketsCount} chamado(s) em aberto vinculado(s) a ele.`,
-    );
+    return {
+      success: false,
+      error: `Não é possível desativar este técnico. Existem ${linkedTicketsCount} chamado(s) em aberto vinculado(s) a ele.`,
+    };
   }
 
   await prisma.user.update({
@@ -46,4 +48,6 @@ export const DisableTechnician = async ({ userId }: DisableTechnicianProps) => {
   });
 
   revalidatePath("/admin/users/technicians");
+
+  return { success: true, error: null };
 };

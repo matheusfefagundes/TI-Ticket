@@ -4,17 +4,14 @@ import { toast } from "sonner";
 
 export function useUserActions(userId: string) {
   const disableTechnician = async () => {
-    try {
-      await DisableTechnician({ userId });
-      toast.success("Técnico desativado com sucesso!"); 
-    } catch (error) {
-      console.error(error);
-      const message =
-        error instanceof Error
-          ? error.message
-          : "Erro ao desativar o técnico. Tente novamente.";
-      toast.error(message); 
+    const result = await DisableTechnician({ userId });
+
+    if (!result.success) {
+      toast.error(result.error);
+      return;
     }
+
+    toast.success("Técnico desativado com sucesso!"); 
   };
 
   const deleteClient = async () => {
