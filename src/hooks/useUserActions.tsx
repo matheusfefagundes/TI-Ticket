@@ -9,7 +9,11 @@ export function useUserActions(userId: string) {
       toast.success("Técnico desativado com sucesso!"); 
     } catch (error) {
       console.error(error);
-      toast.error("Erro ao desativar o técnico. Tente novamente."); 
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Erro ao desativar o técnico. Tente novamente.";
+      toast.error(message); 
     }
   };
 
