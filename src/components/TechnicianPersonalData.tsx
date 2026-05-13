@@ -18,6 +18,7 @@ export function TechnicianPersonalData() {
 
   const {
     register,
+    clearErrors,
     formState: { errors },
   } = useFormContext<NewTechnicianFormData>();
 
@@ -44,7 +45,7 @@ export function TechnicianPersonalData() {
               {...register("name")}
               disabled={!!params.id}
               placeholder="Nome completo"
-              className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b px-0 focus-visible:ring-0"
+              className="placeholder:text-md placeholder:text-app-gray-400"
             />
             {errors.name && (
               <span className="text-xs text-red-500">
@@ -63,8 +64,9 @@ export function TechnicianPersonalData() {
               id="email"
               autoComplete="off"
               {...register("email")}
+              onFocus={() => clearErrors("email")}
               placeholder="exemplo@email.com"
-              className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b px-0 focus-visible:ring-0"
+              className="placeholder:text-md placeholder:text-app-gray-400"
             />
             {errors.email && (
               <span className="text-xs text-red-500">
@@ -84,8 +86,9 @@ export function TechnicianPersonalData() {
                 id="password"
                 autoComplete="off"
                 {...register("password")}
+              onFocus={() => clearErrors("password")}
                 placeholder="Defina a senha de acesso"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b px-0 focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-400"
               />
               {errors.password ? (
                 <span className="text-xs text-red-500">

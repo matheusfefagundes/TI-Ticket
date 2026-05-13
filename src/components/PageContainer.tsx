@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
 import { useIsRoute } from "@/hooks/useIsRoute";
 import Link from "next/link";
-import { PopupService } from "./PopupService";
+import { PopupService } from "./popups/PopupService";
 import { cn } from "@/lib/classMerge";
 
 interface PageContainerProps {

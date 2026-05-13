@@ -1,11 +1,11 @@
-import { Field, FieldLabel } from "./ui/field";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Field, FieldLabel } from "../ui/field";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 import { useFormContext } from "react-hook-form";
-import { NewTicketData } from "../schemas/new-ticket";
+import { NewTicketData } from "../../schemas/new-ticket";
 import { useEffect, useState } from "react";
-import { GetServicePrice } from "../actions/GetServicePrice";
-import { useNewTicket } from "../hooks/useNewTicket";
+import { GetServicePrice } from "../../actions/GetServicePrice";
+import { useNewTicket } from "../../hooks/useNewTicket";
 
 export function TicketSummary() {
   const {

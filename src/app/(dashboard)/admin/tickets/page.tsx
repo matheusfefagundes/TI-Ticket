@@ -1,4 +1,4 @@
-import { TicketsTable, TicketRow } from "@/components/TicketsColumns";
+import { TicketsTable, TicketRow } from "@/components/ticket/TicketsColumns";
 import { DataTable } from "@/components/DataTable";
 import { GetAllTickets } from "@/actions/GetAllTickets";
 import { PageContainer } from "@/components/PageContainer";

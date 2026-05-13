@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { useLogout } from "@/hooks/useLogout";
 import { useProfile } from "@/hooks/useProfile";
-import { PopupProfile } from "./PopupProfile";
+import { PopupProfile } from "./popups/PopupProfile";
 
 interface ProfileOptionsProps {
   className?: string;

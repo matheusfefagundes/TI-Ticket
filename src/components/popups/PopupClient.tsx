@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Dialog,
   DialogClose,
@@ -7,13 +7,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
+} from "../ui/dialog";
 import Image from "next/image";
 import { FormProvider } from "react-hook-form";
 import { useClientProfile } from "@/hooks/useClientProfile";
-import { Field, FieldGroup, FieldLabel } from "./ui/field";
-import { InitialsAvatar } from "./InitialsAvatar";
-import { Input } from "./ui/input";
+import { Field, FieldGroup, FieldLabel } from "../ui/field";
+import { InitialsAvatar } from "../InitialsAvatar";
+import { Input } from "../ui/input";
 
 interface PopupClientProps {
   name: string;
@@ -28,6 +28,7 @@ export function PopupClient({ name, userId, email }: PopupClientProps) {
     register,
     formState: { errors, isSubmitting },
     handleSubmit,
+    clearErrors,
   } = methods;
 
   const handleUpdate = handleSubmit((data) => onSubmit(userId, data));
@@ -36,7 +37,11 @@ export function PopupClient({ name, userId, email }: PopupClientProps) {
     <Dialog>
       <FormProvider {...methods}>
         <DialogTrigger asChild>
-          <Button size="icon-sm" variant="ghost" className="bg-app-gray-500 hover:bg-app-gray-400 transition-colors">
+          <Button
+            size="icon-sm"
+            variant="ghost"
+            className="bg-app-gray-500 hover:bg-app-gray-400 transition-colors"
+          >
             <Image
               src="/icons/pen-line.svg"
               alt="Ícone de lápis"
@@ -71,7 +76,7 @@ export function PopupClient({ name, userId, email }: PopupClientProps) {
                 value={name}
                 disabled={true}
                 placeholder="Nome completo"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 px-0 focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-400"
               />
             </Field>
             <Field>
@@ -85,8 +90,9 @@ export function PopupClient({ name, userId, email }: PopupClientProps) {
                 id="email"
                 autoComplete="off"
                 {...register("email")}
+                onFocus={() => clearErrors("email")}
                 placeholder="example@email.com"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 px-0 focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-400"
               />
               {errors.email && (
                 <span className="text-xs text-red-500">

@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { InitialsAvatar } from "./InitialsAvatar";
+import { InitialsAvatar } from "../InitialsAvatar";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { cn } from "@/lib/classMerge";

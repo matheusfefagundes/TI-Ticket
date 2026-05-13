@@ -17,7 +17,7 @@ import { toast } from "sonner";
 
 export default function LoginPage() {
   useEffect(() => {
-    // 1. Verifica se a URL possui o parâmetro que o Middleware enviou
+    // 1. Verifica se a URL possui o parâmetro que o Proxy enviou
     const urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams.get("expired") === "true") {
@@ -64,7 +64,7 @@ export default function LoginPage() {
               autoComplete="off"
               {...register("email")}
               placeholder="exemplo@email.com"
-              className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b px-0 focus-visible:ring-0"
+              className="placeholder:text-md placeholder:text-app-gray-400"
             />
             {errors.email && (
               <span className="text-xs text-red-500">
@@ -87,13 +87,13 @@ export default function LoginPage() {
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
                 placeholder="Digite sua senha"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 w-full rounded-none border-0 border-b px-0 pr-10 focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-400 w-full pr-10"
               />
 
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-0 flex items-center justify-center text-app-gray-400 hover:text-app-gray-200 transition-colors focus:outline-none"
+                className="absolute right-3 flex items-center justify-center text-app-gray-400 hover:text-app-gray-200 transition-colors focus:outline-none"
                 aria-label={showPassword ? "Esconder senha" : "Mostrar senha"}
               >
                 {showPassword ? (

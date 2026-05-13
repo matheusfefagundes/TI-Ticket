@@ -10,7 +10,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import { DeleteUser } from "./DeleteUser";
 import Link from "next/link";
-import { PopupClient } from "./PopupClient";
+import { PopupClient } from "./popups/PopupClient";
 
 export type Users = {
   id: string;

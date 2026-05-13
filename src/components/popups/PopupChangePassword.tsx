@@ -6,17 +6,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
-import { Form } from "./Form";
-import { Field, FieldGroup, FieldLabel } from "./ui/field";
-import { Input } from "./ui/input";
+} from "../ui/dialog";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+
+import { Form } from "../Form";
+import { Field, FieldGroup, FieldLabel } from "../ui/field";
+import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import {
   ChangePasswordData,
   changePasswordSchema,
 } from "@/schemas/change-password";
 import { useChangePassword } from "@/hooks/useChangePassword";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 interface PopupChangePasswordProps {
@@ -25,10 +28,14 @@ interface PopupChangePasswordProps {
 
 export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
   const { onSubmit, isOpen, setIsOpen } = useChangePassword(userId);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     handleSubmit,
     register,
+    clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<ChangePasswordData>({
     resolver: zodResolver(changePasswordSchema),
@@ -59,12 +66,23 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
               >
                 Senha atual
               </FieldLabel>
-              <Input
-                id="current-password"
-                {...register("currentPassword")}
-                placeholder="Digite sua senha atual"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 px-0 focus-visible:ring-0"
-              />
+              <div className="relative">
+                <Input
+                  id="current-password"
+                  type={showCurrentPassword ? "text" : "password"}
+                  {...register("currentPassword")}
+                  onFocus={() => clearErrors("currentPassword")}
+                  placeholder="Digite sua senha atual"
+                  className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-app-gray-400 hover:text-app-gray-200"
+                >
+                  {showCurrentPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
               {errors.currentPassword && (
                 <span className="mt-1 text-xs text-red-500">
                   {errors.currentPassword.message}
@@ -78,12 +96,23 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
               >
                 Nova senha
               </FieldLabel>
-              <Input
-                id="new-password"
-                {...register("newPassword")}
-                placeholder="Digite sua nova senha"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 px-0 focus-visible:ring-0"
-              />
+              <div className="relative">
+                <Input
+                  id="new-password"
+                  type={showNewPassword ? "text" : "password"}
+                  {...register("newPassword")}
+                  onFocus={() => clearErrors("newPassword")}
+                  placeholder="Digite sua nova senha"
+                  className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowNewPassword(!showNewPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-app-gray-400 hover:text-app-gray-200"
+                >
+                  {showNewPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
               {errors.newPassword && (
                 <span className="mt-1 text-xs text-red-500">
                   {errors.newPassword.message}
@@ -97,12 +126,23 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
               >
                 Confirme sua senha
               </FieldLabel>
-              <Input
-                id="confirm-password"
-                {...register("confirmNewPassword")}
-                placeholder="Confirme sua nova senha"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 px-0 focus-visible:ring-0"
-              />
+              <div className="relative">
+                <Input
+                  id="confirm-password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  {...register("confirmNewPassword")}
+                  onFocus={() => clearErrors("confirmNewPassword")}
+                  placeholder="Confirme sua nova senha"
+                  className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-app-gray-400 hover:text-app-gray-200"
+                >
+                  {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
               {errors.confirmNewPassword && (
                 <span className="mt-1 text-xs text-red-500">
                   {errors.confirmNewPassword.message}

@@ -6,12 +6,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
+} from "../ui/dialog";
 import { FormProvider } from "react-hook-form";
 import { useServicesActions } from "@/hooks/useServiceActions";
-import { Field, FieldLabel } from "./ui/field";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Field, FieldLabel } from "../ui/field";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 interface PopupServiceProps {
   children: ReactNode;
@@ -41,6 +41,7 @@ export function PopupService({
     formState: { errors, isSubmitting },
     handleSubmit,
     reset,
+    clearErrors,
   } = methods;
 
   const handleAction = handleSubmit(async (data) => {
@@ -81,8 +82,9 @@ export function PopupService({
                 id="title"
                 autoComplete="off"
                 {...register("title")}
+                onFocus={() => clearErrors("title")}
                 placeholder="Nome do serviço"
-                className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 px-0 focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-400"
               />
               {errors.title && (
                 <span className="text-xs text-red-500">
@@ -103,9 +105,10 @@ export function PopupService({
                   id="value"
                   autoComplete="off"
                   {...register("price", { valueAsNumber: true })}
+                  onFocus={() => clearErrors("price")}
                   type="number"
                   placeholder="0,00"
-                  className="placeholder:text-md border-app-gray-500 placeholder:text-app-gray-400 rounded-none border-0 border-b-2 pl-6 focus-visible:ring-0"
+                  className="placeholder:text-md placeholder:text-app-gray-400 pl-6"
                 />
               </div>
               {errors.price && (

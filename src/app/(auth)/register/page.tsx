@@ -50,7 +50,7 @@ export default function RegisterPage() {
               autoComplete="off"
               {...register("name")}
               placeholder="Digite seu nome completo"
-              className="placeholder:text-md placeholder:text-app-gray-400 border-app-gray-500 rounded-none border-0 border-b px-0 focus-visible:ring-0"
+              className="placeholder:text-md placeholder:text-app-gray-400"
             />
             {errors.name && (
               <span className="text-xs text-red-500">
@@ -72,7 +72,7 @@ export default function RegisterPage() {
               autoComplete="off"
               {...register("email")}
               placeholder="exemplo@email.com"
-              className="placeholder:text-md placeholder:text-app-gray-400 border-app-gray-500 rounded-none border-0 border-b px-0 focus-visible:ring-0"
+              className="placeholder:text-md placeholder:text-app-gray-400"
             />
             {errors.email && (
               <span className="text-xs text-red-500">
@@ -97,12 +97,12 @@ export default function RegisterPage() {
                   {...register("password")}
                   type={showPassword ? "text" : "password"}
                   placeholder="Senha"
-                  className="placeholder:text-md placeholder:text-app-gray-400 border-app-gray-500 w-full rounded-none border-0 border-b px-0 pr-8 focus-visible:ring-0"
+                  className="placeholder:text-md placeholder:text-app-gray-400 w-full pr-8"
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-0 text-app-gray-400 hover:text-app-gray-200"
+                  className="absolute right-2 text-app-gray-400 hover:text-app-gray-200"
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -133,12 +133,12 @@ export default function RegisterPage() {
                   {...register("confirmPassword")}
                   type={showPassword ? "text" : "password"}
                   placeholder="Repita a senha"
-                  className="placeholder:text-md placeholder:text-app-gray-400 border-app-gray-500 w-full rounded-none border-0 border-b px-0 pr-8 focus-visible:ring-0"
+                  className="placeholder:text-md placeholder:text-app-gray-400 w-full pr-8"
                 />
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-0 text-app-gray-400 hover:text-app-gray-200"
+                  className="absolute right-2 text-app-gray-400 hover:text-app-gray-200"
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>

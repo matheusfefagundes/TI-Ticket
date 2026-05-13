@@ -1,5 +1,5 @@
 import { PageContainer } from "@/components/PageContainer";
-import { TicketsTable, TicketRow } from "@/components/TicketsColumns";
+import { TicketsTable, TicketRow } from "@/components/ticket/TicketsColumns";
 import { GetAllTickets } from "@/actions/GetAllTickets";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";

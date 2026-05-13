@@ -22,6 +22,7 @@ export function NewTicketInfo() {
   const {
     register,
     control,
+    clearErrors,
     formState: { errors },
   } = useFormContext<NewTicketData>();
 
@@ -45,7 +46,7 @@ export function NewTicketInfo() {
           id="title"
           {...register("title")}
           placeholder="Digite um título para o chamado"
-          className="placeholder:text-md placeholder:text-app-gray-400 border-app-gray-500 text-app-gray-200 truncate rounded-none border-0 border-b-2 focus-visible:ring-0"
+          className="placeholder:text-md placeholder:text-app-gray-400 text-app-gray-200 truncate"
         />
         {errors.title && (
           <p className="text-xs text-red-600">{errors.title.message}</p>

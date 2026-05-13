@@ -1,5 +1,5 @@
 import { GetAllTicketServices } from "@/actions/GetAllTicketServices";
-import { PopupAdditionalServices } from "./PopupAdditionalServices";
+import { PopupAdditionalServices } from "./popups/PopupAdditionalServices";
 import { GetAvailableServices } from "@/actions/GetAvailableServices";
 import { DeleteService } from "./DeleteService";
 

@@ -1,15 +1,15 @@
 "use client";
 
 import { PlusIcon } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
-import { Field, FieldLabel } from "./ui/field";
+} from "../ui/dialog";
+import { Field, FieldLabel } from "../ui/field";
 import {
   Select,
   SelectContent,
@@ -18,10 +18,10 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Input } from "./ui/input";
+} from "../ui/select";
+import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
-import { Form } from "./Form";
+import { Form } from "../Form";
 import {
   useAdditionalServicesProps,
   useAdditionalServices,
@@ -102,7 +102,7 @@ export function PopupAdditionalServices({
                 value={selectedServicePrice}
                 readOnly
                 type="number"
-                className="placeholder:text-md placeholder:text-app-gray-200 border-app-gray-500 rounded-none border-0 border-b-2 pl-6 shadow-md focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-200 pl-6"
               />
             </div>
           </Field>

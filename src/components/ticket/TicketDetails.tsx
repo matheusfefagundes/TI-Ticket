@@ -1,11 +1,11 @@
 import { GetTicketUnique } from "@/actions/GetTicketUnique";
 import { BackBottom } from "@/components/BackBottom";
-import { TicketDetailsAside } from "@/components/TicketDetailsAside";
-import { TicketInfoCard } from "@/components/TicketInfoCard";
+import { TicketDetailsAside } from "@/components/ticket/TicketDetailsAside";
+import { TicketInfoCard } from "@/components/ticket/TicketInfoCard";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { ReactNode } from "react";
-import { AttendanceActions } from "./AttendanceActions";
+import { AttendanceActions } from "../AttendanceActions";
 
 interface TicketDetailsProps {
   params: Promise<{ id: string }>;

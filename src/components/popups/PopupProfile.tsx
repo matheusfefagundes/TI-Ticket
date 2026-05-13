@@ -1,21 +1,21 @@
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
-import { Form } from "./Form";
-import { Field, FieldGroup, FieldLabel } from "./ui/field";
-import { Avatar, AvatarFallback } from "./ui/avatar";
+} from "../ui/dialog";
+import { Form } from "../Form";
+import { Field, FieldGroup, FieldLabel } from "../ui/field";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import { ReactNode } from "react";
 import { useTechnicianAvailabilities } from "@/hooks/useTechnicianAvailabilities";
-import { useUserImage } from "../hooks/useUserImage";
-import { InitialsAvatar } from "./InitialsAvatar";
+import { useUserImage } from "../../hooks/useUserImage";
+import { InitialsAvatar } from "../InitialsAvatar";
 import { PopupChangePassword } from "./PopupChangePassword";
 
 type PopupProfileProps = React.ComponentProps<"button"> & {
@@ -65,7 +65,7 @@ export function PopupProfile({
                 <div className="flex items-center gap-1">
                   <div className="relative">
                     <FieldLabel
-                      htmlFor="upload"  
+                      htmlFor="upload"
                       className="text-app-gray-200 bg-app-gray-500 block w-full cursor-pointer rounded py-2.5 pr-2 pl-8 text-xs font-bold hover:bg-app-gray-400 transition-colors"
                     >
                       Nova imagem
@@ -112,7 +112,7 @@ export function PopupProfile({
                 id="name"
                 value={session.user.name}
                 readOnly
-                className="placeholder:text-md placeholder:text-app-gray-200 border-app-gray-500 rounded-none border-0 border-b-2 pl-6 shadow-md focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-200"
               />
             </Field>
             <Field>
@@ -126,7 +126,7 @@ export function PopupProfile({
                 id="email"
                 value={session.user.email}
                 readOnly
-                className="placeholder:text-md placeholder:text-app-gray-200 border-app-gray-500 rounded-none border-0 border-b-2 pl-6 shadow-md focus-visible:ring-0"
+                className="placeholder:text-md placeholder:text-app-gray-200"
               />
             </Field>
             <Field>
@@ -142,7 +142,7 @@ export function PopupProfile({
                   type="password"
                   value="••••••••"
                   readOnly
-                  className="placeholder:text-md placeholder:text-app-gray-200 border-app-gray-500 rounded-none border-0 border-b-2 pl-6 shadow-md focus-visible:ring-0"
+                  className="placeholder:text-md placeholder:text-app-gray-200"
                 />
                 <div className="absolute top-0 right-0 flex items-center gap-2">
                   <PopupChangePassword userId={session.user.id} />
