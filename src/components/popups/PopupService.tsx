@@ -100,7 +100,7 @@ export function PopupService({
                 Valor
               </FieldLabel>
               <div className="relative flex items-center">
-                <span className="absolute left-0">R$</span>
+                <span className="absolute left-3 text-app-gray-300">R$</span>
                 <Input
                   id="value"
                   autoComplete="off"
@@ -108,7 +108,7 @@ export function PopupService({
                   onFocus={() => clearErrors("price")}
                   type="number"
                   placeholder="0,00"
-                  className="placeholder:text-md placeholder:text-app-gray-400 pl-6"
+                  className="placeholder:text-md placeholder:text-app-gray-400 pl-9"
                 />
               </div>
               {errors.price && (
