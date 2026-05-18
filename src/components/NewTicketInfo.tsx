@@ -63,7 +63,7 @@ export function NewTicketInfo() {
           id="description"
           {...register("description")}
           rows={6}
-          className="border-app-gray-500 text-app-gray-200 resize-none! border-0 border-b-2"
+          className="text-app-gray-200 resize-none!"
           maxLength={200}
           placeholder="Descreva o que está acontecendo"
         />
@@ -80,7 +80,7 @@ export function NewTicketInfo() {
           control={control}
           render={({ field }) => (
             <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <SelectTrigger className="border-app-gray-500 w-full border-0 border-b-2 focus-visible:ring-0">
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder="Selecione um serviço" />
               </SelectTrigger>
               <SelectContent
@@ -116,7 +116,7 @@ export function NewTicketInfo() {
           control={control}
           render={({ field }) => (
             <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <SelectTrigger className="border-app-gray-500 w-full border-0 border-b-2 focus-visible:ring-0">
+              <SelectTrigger className="w-full">
                 <SelectValue placeholder="Selecione um técnico" />
               </SelectTrigger>
               <SelectContent
