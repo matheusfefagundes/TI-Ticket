@@ -75,10 +75,10 @@ export async function Tickets({ data }: TicketsProps) {
                     </div>
                   </div>
 
-                  <h2 className="text-app-gray-100 mt-1 font-bold">
+                  <h2 className="text-app-gray-100 mt-1 truncate font-bold">
                     {ticket.title}
                   </h2>
-                  <p className="text-app-gray-200 text-xs">
+                  <p className="text-app-gray-200 truncate text-xs">
                     {ticket.description}
                   </p>
 

@@ -8,6 +8,11 @@ import { ptBR } from "date-fns/locale";
 import Image from "next/image";
 import { InitialsAvatar } from "../InitialsAvatar";
 import { useSession } from "next-auth/react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export interface TicketInfoCardProps {
   data: Prisma.TicketGetPayload<{
@@ -49,7 +54,7 @@ export function TicketInfoCard({ data, className }: TicketInfoCardProps) {
   return (
     <div
       className={cn([
-        "border-app-gray-500 space-y-4 rounded-lg border p-6 lg:col-span-3 lg:col-start-1 lg:grid",
+        "border-app-gray-500 space-y-4 overflow-hidden rounded-lg border p-6 lg:col-span-3 lg:col-start-1 lg:grid",
         className,
       ])}
     >
@@ -77,9 +82,18 @@ export function TicketInfoCard({ data, className }: TicketInfoCardProps) {
         </h2>
       </div>
 
-      <div>
+      <div className="min-w-0">
         <small className="text-app-gray-400 text-xs font-bold">Descrição</small>
-        <p className="text-app-gray-200 text-sm">{data.description}</p>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <p className="text-app-gray-200 truncate cursor-pointer text-sm">
+              {data.description}
+            </p>
+          </TooltipTrigger>
+          <TooltipContent side="top" align="start" className="max-w-sm">
+            {data.description}
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       <div>
