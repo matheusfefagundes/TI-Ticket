@@ -1,11 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
+import { registerSchema } from "@/schemas/register";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, name, password } = body;
+    const parsedBody = registerSchema.parse(body);
+    const { email, name, password } = parsedBody;
 
     if (!email || !name || !password) {
       return new NextResponse("Faltam dados", { status: 400 });

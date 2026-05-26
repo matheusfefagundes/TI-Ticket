@@ -1,7 +1,8 @@
 import z from "zod";
+import { normalizedTitleSchema } from "./shared";
 
 export const newServiceSchema = z.object({
-  title: z.string().min(10, "Mínimo de 10 digítos"),
+  title: normalizedTitleSchema.min(10, "Mínimo de 10 digítos"),
   price: z.number().min(50, "Valor mínimo de R$ 50,00"),
 });
 

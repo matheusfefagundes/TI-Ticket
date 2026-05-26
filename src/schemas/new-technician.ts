@@ -1,13 +1,22 @@
 import z from "zod";
+import {
+  normalizedAvailabilityItemSchema,
+  normalizedEmailSchema,
+  normalizedNameSchema,
+  passwordSchema,
+} from "./shared";
 
 export const newTechnicianSchema = z.object({
-  name: z.string().min(3, "Mínimo de 3 digítos"),
-  email: z.string().email("E-mail inválido"),
-  password: z.string().min(6, "Mínimo de 6 digítos"),
+  name: normalizedNameSchema,
+  email: normalizedEmailSchema,
+  password: passwordSchema,
   availabilities: z
-    .array(z.string())
+    .array(normalizedAvailabilityItemSchema)
     .min(8, "Mínimo de 8 horários")
-    .max(10, "Máximo de 10 horários"),
+    .max(10, "Máximo de 10 horários")
+    .refine((values) => new Set(values).size === values.length, {
+      message: "Os horários não podem se repetir.",
+    }),
 });
 
 export type NewTechnicianFormData = z.infer<typeof newTechnicianSchema>;

@@ -1,7 +1,10 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { UpdateServiceFormData } from "@/schemas/update-service";
+import {
+  UpdateServiceFormData,
+  updateServiceSchema,
+} from "@/schemas/update-service";
 import { revalidatePath } from "next/cache";
 
 interface UpdateServiceProps {
@@ -13,6 +16,8 @@ export const UpdateService = async ({
   data,
   serviceId,
 }: UpdateServiceProps) => {
+  const validatedData = updateServiceSchema.parse(data);
+
   const service = await prisma.service.findUnique({
     where: {
       id: serviceId,
@@ -23,7 +28,7 @@ export const UpdateService = async ({
     throw new Error("Serviço não encontrado.");
   }
 
-  if (!data.price || !data.title) {
+  if (!validatedData.price || !validatedData.title) {
     throw new Error("Informe oque deseja atualizar.");
   }
 
@@ -32,7 +37,7 @@ export const UpdateService = async ({
       id: service.id,
     },
     data: {
-      ...data,
+      ...validatedData,
     },
   });
 

@@ -1,7 +1,10 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { UpdateClientFormData } from "@/schemas/update-client";
+import {
+  UpdateClientFormData,
+  updateClientSchema,
+} from "@/schemas/update-client";
 import { revalidatePath } from "next/cache";
 
 interface UpdateClientProps {
@@ -10,6 +13,8 @@ interface UpdateClientProps {
 }
 
 export const UpdateClient = async ({ userId, data }: UpdateClientProps) => {
+  const validatedData = updateClientSchema.parse(data);
+
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -20,7 +25,7 @@ export const UpdateClient = async ({ userId, data }: UpdateClientProps) => {
     throw new Error("Usuário não encontrado");
   }
 
-  if (!data.email) {
+  if (!validatedData.email) {
     throw new Error("Informe o novo valor para o email.");
   }
 
@@ -32,7 +37,7 @@ export const UpdateClient = async ({ userId, data }: UpdateClientProps) => {
       name: true,
     },
     data: {
-      email: data.email,
+      email: validatedData.email,
     },
   });
 

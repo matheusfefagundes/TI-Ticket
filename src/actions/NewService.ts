@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { NewServiceFormData } from "@/schemas/new-service";
+import { NewServiceFormData, newServiceSchema } from "@/schemas/new-service";
 import { revalidatePath } from "next/cache";
 
 interface NewServiceProps {
@@ -9,9 +9,11 @@ interface NewServiceProps {
 }
 
 export const NewService = async ({ data }: NewServiceProps) => {
+  const validatedData = newServiceSchema.parse(data);
+
   const service = await prisma.service.create({
     data: {
-      ...data,
+      ...validatedData,
     },
   });
 

@@ -1,7 +1,10 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { UpdateTechnicianFormData } from "@/schemas/update-technician";
+import {
+  UpdateTechnicianFormData,
+  updateTechnicianSchema,
+} from "@/schemas/update-technician";
 
 interface UpdateTechniciansProps {
   userId: string;
@@ -12,6 +15,8 @@ export const UpdateTechnicians = async ({
   data,
   userId,
 }: UpdateTechniciansProps) => {
+  const validatedData = updateTechnicianSchema.parse(data);
+
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -20,7 +25,7 @@ export const UpdateTechnicians = async ({
 
   if (!user) throw new Error("Usuário não encontrado");
 
-  if (!data.availabilities && !data.email) {
+  if (!validatedData.availabilities && !validatedData.email) {
     throw new Error("Informe os novos valores para serem atualizados.");
   }
 
@@ -29,14 +34,14 @@ export const UpdateTechnicians = async ({
       id: userId,
     },
     data: {
-      email: data.email,
+      email: validatedData.email,
       availabilities: {
         updateMany: {
           where: {
             technicianId: userId,
           },
           data: {
-            schedules: data.availabilities,
+            schedules: validatedData.availabilities,
           },
         },
       },

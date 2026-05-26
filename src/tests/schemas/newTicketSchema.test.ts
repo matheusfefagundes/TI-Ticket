@@ -75,4 +75,19 @@ describe("newTicketSchema - validação do formulário de novo chamado", () => {
     const result = newTicketSchema.safeParse(withoutTechnicianId);
     expect(result.success).toBe(false);
   });
+
+  it("deve normalizar título e descrição", () => {
+    const result = newTicketSchema.safeParse({
+      ...validData,
+      title: "  Problema no sistema  ",
+      description: "  O sistema está apresentando falhas ao logar.  ",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.title).toBe("Problema no sistema");
+      expect(result.data.description).toBe(
+        "O sistema está apresentando falhas ao logar."
+      );
+    }
+  });
 });

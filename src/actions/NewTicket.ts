@@ -2,7 +2,7 @@
 
 import { authOptions } from "../lib/auth";
 import { prisma } from "../lib/prisma";
-import { NewTicketData } from "../schemas/new-ticket";
+import { NewTicketData, newTicketSchema } from "../schemas/new-ticket";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
 
@@ -16,7 +16,8 @@ export const NewTicket = async ({ data, serviceId }: NewTicketProps) => {
 
   if (!session) return null;
 
-  const { service, ...ticketData } = data;
+  const validatedData = newTicketSchema.parse(data);
+  const { service, ...ticketData } = validatedData;
 
   const servicePrice = await prisma.service.findUnique({
     where: {

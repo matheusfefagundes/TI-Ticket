@@ -1,7 +1,10 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { ChangePasswordData } from "@/schemas/change-password";
+import {
+  ChangePasswordData,
+  changePasswordSchema,
+} from "@/schemas/change-password";
 import { compare, hash } from "bcrypt";
 
 export const ChangePasswordAction = async (
@@ -9,6 +12,8 @@ export const ChangePasswordAction = async (
   data: ChangePasswordData,
 ) => {
   try {
+    const validatedData = changePasswordSchema.parse(data);
+
     const user = await prisma.user.findUnique({
       where: {
         id: userId,
@@ -25,7 +30,10 @@ export const ChangePasswordAction = async (
       };
     }
 
-    const matchedPassword = await compare(data.currentPassword, user.password);
+    const matchedPassword = await compare(
+      validatedData.currentPassword,
+      user.password,
+    );
 
     if (!matchedPassword) {
       return {
@@ -34,7 +42,7 @@ export const ChangePasswordAction = async (
       };
     }
 
-    const hashedPassword = await hash(data.newPassword, 12);
+    const hashedPassword = await hash(validatedData.newPassword, 12);
 
     await prisma.user.update({
       where: {

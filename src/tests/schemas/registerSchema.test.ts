@@ -39,11 +39,62 @@ describe("registerSchema - validação do formulário de cadastro", () => {
     }
   });
 
+  it("deve falhar quando a senha não tiver letras", () => {
+    const result = registerSchema.safeParse({
+      ...validData,
+      password: "123456",
+      confirmPassword: "123456",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const passwordError = result.error.issues.find((i) =>
+        i.path.includes("password")
+      );
+      expect(passwordError?.message).toBe(
+        "A senha deve conter pelo menos uma letra."
+      );
+    }
+  });
+
+  it("deve falhar quando a senha não tiver números", () => {
+    const result = registerSchema.safeParse({
+      ...validData,
+      password: "senhas",
+      confirmPassword: "senhas",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const passwordError = result.error.issues.find((i) =>
+        i.path.includes("password")
+      );
+      expect(passwordError?.message).toBe(
+        "A senha deve conter pelo menos um número."
+      );
+    }
+  });
+
+  it("deve falhar quando a senha tiver espaços nas extremidades", () => {
+    const result = registerSchema.safeParse({
+      ...validData,
+      password: " senha123 ",
+      confirmPassword: " senha123 ",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      const passwordError = result.error.issues.find((i) =>
+        i.path.includes("password")
+      );
+      expect(passwordError?.message).toBe(
+        "A senha não pode começar ou terminar com espaços."
+      );
+    }
+  });
+
   it("deve falhar quando as senhas não coincidirem", () => {
     const result = registerSchema.safeParse({
       ...validData,
       password: "senha123",
-      confirmPassword: "outrasenha",
+      confirmPassword: "outra123",
     });
     expect(result.success).toBe(false);
     if (!result.success) {
@@ -65,6 +116,19 @@ describe("registerSchema - validação do formulário de cadastro", () => {
         i.path.includes("email")
       );
       expect(emailError?.message).toBe("E-mail inválido.");
+    }
+  });
+
+  it("deve normalizar nome e e-mail", () => {
+    const result = registerSchema.safeParse({
+      ...validData,
+      name: "  João Silva  ",
+      email: "  JOAO@EMAIL.COM  ",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.name).toBe("João Silva");
+      expect(result.data.email).toBe("joao@email.com");
     }
   });
 });
