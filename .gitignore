@@ -22,6 +22,7 @@ prisma.config.ts
 
 # production
 /build
+.neon
 
 # misc
 .DS_Store
