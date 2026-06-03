@@ -1,5 +1,5 @@
 import { GetTicketUnique } from "@/actions/GetTicketUnique";
-import { BackBottom } from "@/components/BackBottom";
+import { BackButtom } from "@/components/BackButtom";
 import { TicketDetailsAside } from "@/components/ticket/TicketDetailsAside";
 import { TicketInfoCard } from "@/components/ticket/TicketInfoCard";
 import { authOptions } from "@/lib/auth";
@@ -33,7 +33,7 @@ export async function TicketDetails({ params, children }: TicketDetailsProps) {
     <div className="mx-6 h-full space-y-6 pb-6 min-[1024px]:px-16 min-[1400px]:px-46 md:pt-13">
       <div className="grid justify-between gap-3 md:flex md:items-end">
         <div className="mt-7 md:mt-0">
-          <BackBottom className="has-[>svg]:px-0" />
+          <BackButtom className="has-[>svg]:px-0" />
           <h1 className="text-brand-dark text-xl font-bold">
             Chamado detalhado
           </h1>

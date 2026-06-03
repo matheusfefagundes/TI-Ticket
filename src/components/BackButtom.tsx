@@ -5,11 +5,11 @@ import { Button } from "./ui/button";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/classMerge";
 
-interface BackBottomProps {
+interface BackButtomProps {
   className?: string;
 }
 
-export function BackBottom({ className }: BackBottomProps) {
+export function BackButtom({ className }: BackButtomProps) {
   const router = useRouter();
 
   return (

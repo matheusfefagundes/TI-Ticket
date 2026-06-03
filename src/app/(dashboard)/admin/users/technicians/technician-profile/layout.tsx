@@ -1,6 +1,6 @@
 "use client";
 
-import { BackBottom } from "@/components/BackBottom";
+import { BackButtom } from "@/components/BackButtom";
 import { Button } from "@/components/ui/button";
 import { useTechnicianProfile } from "@/hooks/useTechnicianProfile";
 import { ReactNode } from "react";
@@ -22,13 +22,17 @@ export default function TechnicianProfileLayout({
         <div>
           <div className="lg:flex lg:items-center lg:justify-between">
             <div>
-              <BackBottom className="has-[>svg]:px-0" />
+              <BackButtom className="has-[>svg]:px-0" />
               <h1 className="text-brand-dark text-xl font-bold">
                 Perfil de técncico
               </h1>
             </div>
             <div className="mt-3 flex gap-2">
-              <Button variant="outline" type="button" className="flex-1 hover:bg-app-gray-400 transition-colors" >
+              <Button
+                variant="outline"
+                type="button"
+                className="flex-1 hover:bg-app-gray-400 transition-colors"
+              >
                 Cancelar
               </Button>
               <Button

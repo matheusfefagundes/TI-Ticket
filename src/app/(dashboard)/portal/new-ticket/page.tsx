@@ -8,6 +8,7 @@ import { useNewTicket } from "@/hooks/useNewTicket";
 import { NewTicketData, newTicketSchema } from "@/schemas/new-ticket";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
+import { BackButtom } from "@/components/BackButtom";
 
 export default function NewTicketPage() {
   const { onSubmit } = useNewTicket();
@@ -17,7 +18,11 @@ export default function NewTicketPage() {
   });
 
   return (
-    <PageContainer title="Novo chamado" className="mb-8 lg:px-45.75">
+    <PageContainer className="mb-8 lg:px-45.75">
+      <div className="mt-7 md:mt-0">
+        <BackButtom className="has-[>svg]:px-0" />
+        <h1 className="text-brand-dark text-xl font-bold">Novo chamado</h1>
+      </div>
       <FormProvider {...methods}>
         <Form
           onSubmit={methods.handleSubmit(onSubmit)}
