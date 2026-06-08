@@ -29,6 +29,5 @@ jobs:
       - name: Build project (Conecta no banco Neon de Produção)
         run: npm run build
         env:
-          # Aponta para uma chave secreta nova que você vai criar no GitHub
           DATABASE_URL: ${{ secrets.DATABASE_URL_PROD }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
