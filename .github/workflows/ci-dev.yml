@@ -1,14 +1,30 @@
-name: Continuous Integration
+name: CI - Development
 
 on:
   push:
-    branches: [main, development]
+    branches: [development]
   pull_request:
-    branches: [main, development]
+    branches: [development]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ti-ticket
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,7 +41,7 @@ jobs:
       - name: Prisma Generate
         run: npx prisma generate
         env:
-          DATABASE_URL: "postgresql://neondb_owner:npg_Ytv7QuOxMG1b@ep-fancy-haze-a644kkka.us-west-2.aws.neon.tech/neondb?sslmode=require"
+          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/ti-ticket?schema=public"
 
       - name: Run Lint
         run: npm run lint
@@ -37,5 +53,5 @@ jobs:
         run: npm run build
         env:
           # Variável necessária para o Next.js validar as queries do Prisma no build
-          DATABASE_URL: "postgresql://neondb_owner:npg_Ytv7QuOxMG1b@ep-fancy-haze-a644kkka.us-west-2.aws.neon.tech/neondb?sslmode=require"
+          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/ti-ticket?schema=public"
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
