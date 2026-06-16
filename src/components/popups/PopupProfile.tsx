@@ -86,6 +86,7 @@ export function PopupProfile({
                     />
                   </div>
                   <Button
+                    type="button"
                     variant="outline"
                     size="icon"
                     className="bg-app-gray-500 rounded-lg hover:bg-app-gray-400 transition-colors"
