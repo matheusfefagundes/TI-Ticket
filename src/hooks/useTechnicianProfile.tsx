@@ -25,6 +25,7 @@ export function useTechnicianProfile() {
     resolver: zodResolver(
       isEditing ? updateTechnicianSchema : newTechnicianSchema,
     ),
+    mode: "onTouched",
     defaultValues: {
       availabilities: [],
     } as TechnicianFormValues,

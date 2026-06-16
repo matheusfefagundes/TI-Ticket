@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { Eye, EyeOff } from "lucide-react";
 import {
   Field,
   FieldDescription,
@@ -15,10 +17,10 @@ import { useTechnicianDetails } from "@/hooks/useTechnicianDetails";
 
 export function TechnicianPersonalData() {
   const { params } = useTechnicianDetails();
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
-    clearErrors,
     formState: { errors },
   } = useFormContext<NewTechnicianFormData>();
 
@@ -64,7 +66,6 @@ export function TechnicianPersonalData() {
               id="email"
               autoComplete="off"
               {...register("email")}
-              onFocus={() => clearErrors("email")}
               placeholder="exemplo@email.com"
               className="placeholder:text-md placeholder:text-app-gray-400"
             />
@@ -82,21 +83,30 @@ export function TechnicianPersonalData() {
               >
                 Senha
               </FieldLabel>
-              <Input
-                id="password"
-                autoComplete="off"
-                {...register("password")}
-              onFocus={() => clearErrors("password")}
-                placeholder="Defina a senha de acesso"
-                className="placeholder:text-md placeholder:text-app-gray-400"
-              />
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="off"
+                  {...register("password")}
+                  placeholder="Defina a senha de acesso"
+                  className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-app-gray-400 hover:text-app-gray-200"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
               {errors.password ? (
                 <span className="text-xs text-red-500">
                   {errors.password.message}
                 </span>
               ) : (
                 <small className="text-app-gray-400 text-xs italic">
-                  Mínimo de 6 digítos
+                  Mínimo de 6 dígitos, com letras e números
                 </small>
               )}
             </Field>
