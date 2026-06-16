@@ -35,16 +35,17 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
   const {
     handleSubmit,
     register,
-    clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<ChangePasswordData>({
     resolver: zodResolver(changePasswordSchema),
+    mode: "onTouched",
   });
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
+          type="button"
           variant="ghost"
           className="text-app-gray-200 px-2 py-1.5 text-xs font-bold"
         >
@@ -71,7 +72,6 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
                   id="current-password"
                   type={showCurrentPassword ? "text" : "password"}
                   {...register("currentPassword")}
-                  onFocus={() => clearErrors("currentPassword")}
                   placeholder="Digite sua senha atual"
                   className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
                 />
@@ -101,7 +101,6 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
                   id="new-password"
                   type={showNewPassword ? "text" : "password"}
                   {...register("newPassword")}
-                  onFocus={() => clearErrors("newPassword")}
                   placeholder="Digite sua nova senha"
                   className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
                 />
@@ -131,7 +130,6 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
                   id="confirm-password"
                   type={showConfirmPassword ? "text" : "password"}
                   {...register("confirmNewPassword")}
-                  onFocus={() => clearErrors("confirmNewPassword")}
                   placeholder="Confirme sua nova senha"
                   className="placeholder:text-md placeholder:text-app-gray-400 pr-10"
                 />
@@ -152,7 +150,6 @@ export function PopupChangePassword({ userId }: PopupChangePasswordProps) {
           </FieldGroup>
           <Field className="px-7 pb-6">
             <Button
-              onClick={() => setIsOpen(true)}
               disabled={isSubmitting}
               type="submit"
             >
