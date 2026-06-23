@@ -12,26 +12,20 @@ Em setores de Tecnologia da Informação, é comum que solicitações cheguem po
 
 ### Requisitos Funcionais (RF)
 
-- **RF01 - Ciclo de Vida do Ticket (CRUD):** Persistência completa de incidentes, incluindo metadados de Título, Descrição, Nível de Severidade e Status.
-- **RF02 - Gestão de Operações Técnicas:**
-  - **Atribuição (Ownership):** Funcionalidade para que o técnico assuma a responsabilidade pelo ticket, realizando a transição de estado para "Em Atendimento".
-  - **Delegamento:** Capacidade de transferência de tickets entre membros da equipe técnica.
-  - **Registros de Evolução:** Inserção de notas técnicas incrementais para documentar o progresso da resolução.
-- **RF03 - Transação de Encerramento :** Implementação de bloco transacional que garante a execução simultânea de:
-  1. **Update**: Alteração do status do ticket para 'Concluído'.
-  2. **Insert**: Registro obrigatório do diagnóstico na tabela de `TicketHistory`.
-     _Mecanismo de Segurança: Falhas na escrita do histórico disparam Rollback imediato no status do ticket._
-- **RF04 - Gestão de Acordo de Nível de Serviço:** Cálculo dinâmico do tempo limite de resolução baseado na matriz de prioridade (Ex: Alta: 4h | Baixa: 24h).
-- **RF05 - Protocolo de Reabertura:** Restrição de reabertura de chamados condicionado à inserção de justificativa técnica (mín. 20 caracteres), validada em camada de serviço.
-- **RF06 - Dashboard Analítico:** Interface para filtragem multidimensional (prioridade, técnico, período) e busca full-text.
+- **RF01 - Ciclo de Vida do Ticket (CRUD):** Persistência de incidentes, incluindo metadados de Título, Descrição e Status (Aberto, Em Atendimento, Concluído).
+- **RF02 - Atribuição e Gestão (Ownership):** Associação de um chamado a um técnico e a um cliente responsável.
+- **RF03 - Catálogo de Serviços:** Gerenciamento de serviços oferecidos com precificação e status de ativação.
+- **RF04 - Orçamentação/Custos de Chamados:** Associação de múltiplos serviços a um ticket, mantendo o histórico de preço (snapshot) praticado no momento da inserção.
+- **RF05 - Gestão de Disponibilidade Técnica:** Controle de escalas e horários de trabalho dos técnicos para atendimentos.
+- **RF06 - Gestão de Acesso Baseado em Papéis (RBAC):** Definição estrita de rotas e funcionalidades com base nos papéis de Usuário: Administrador (`admin`), Técnico (`technical`) ou Cliente (`client`).
 
 ### Requisitos Não Funcionais (RNF)
 
-- **RNF01 - Qualidade de Código (TDD):** Desenvolvimento orientado a testes com foco em testes de integração para validar a consistência do banco de dados.
-- **RNF02 - Entrega Contínua (CI/CD):** Pipeline automatizado via **GitHub Actions** para validação de build e execução de testes em cada integração.
-- **RNF03 - Observabilidade:** Logging estruturado para monitoramento de exceções e telemetria básica de performance da API.
-- **RNF04 - Segurança e Autenticação:** Controle de acesso baseado em **JWT** e implementação de middlewares para sanitização contra SQL Injection.
-- **RNF05 - Idempotência de API:** Garantia de que múltiplas requisições para a mesma operação de fechamento não resultem em registros duplicados.
+- **RNF01 - Entrega Contínua (CI/CD):** Pipeline automatizado via **GitHub Actions** para validação de build e execução de testes (schemas/utils) em cada integração.
+- **RNF02 - Segurança e Autenticação:** Controle de acesso robusto com **NextAuth**, suportando gestão segura de senhas, sessões e tokens via JWT/Banco.
+- **RNF03 - Consistência e Validação de Dados:** Utilização rigorosa da biblioteca `Zod` para checagem e validação de schemas de entrada (nos componentes de UI e em Endpoints/Server Actions).
+- **RNF04 - UI Acessível e Responsiva:** Interface desenvolvida sobre **Tailwind CSS** e os primitivos de acessibilidade do **Radix UI**, com suporte unificado a temas (Light/Dark Mode via `next-themes`).
+- **RNF05 - Experiência do Usuário (UX):** Resposta imediata ao usuário usando toasts (`sonner`), controle inteligente de formulários (`react-hook-form`) e estados de carregamento otimizados.
 
 ---
 
@@ -39,10 +33,10 @@ Em setores de Tecnologia da Informação, é comum que solicitações cheguem po
 
 | Tecnologia                     | Função   | Justificativa                                                        |
 | :----------------------------- | :------- | :------------------------------------------------------------------- |
-| **Node.js + Express**          | Backend  | Alta performance para requisições assíncronas e facilidade com JSON. |
+| **Next.js (API Routes/Server Actions)** | Backend  | Alta performance, server-side rendering e integração unificada com o frontend. |
 | **Next.js + React + Tailwind** | Frontend | Interface moderna, responsiva e de rápida implementação.             |
-| **PostgreSQL**                 | Database | Banco relacional                                                     |
-| **Jest + Supertest**           | QA       | TDD padrão para garantir a confiabilidade do sistema.                |
+| **PostgreSQL + Prisma ORM**    | Database | Banco relacional robusto com ORM tipado para segurança no acesso aos dados. |
+| **Jest + React Testing Library**| QA       | TDD padrão para garantir a confiabilidade dos componentes e lógicas. |
 
 ## 3. Figma
 
@@ -57,8 +51,8 @@ Link: https://drive.google.com/file/d/102q4oNUW_oZW1USY7wMFsnwwLiVhCBxk/view?usp
 ### Passo 1: Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/ti-ticket.git
-cd ti-ticket
+git clone https://github.com/matheusfefagundes/TI-Ticket.git
+cd TI-Ticket
 ```
 
 ### Passo 2: Instalar Dependências
@@ -73,7 +67,7 @@ Crie um arquivo `.env.local` na raiz do projeto e adicione as variáveis necess�
 
 ```env
 # Banco de Dados PostgreSQL
-DATABASE_URL="postgresql://usuario:senha@localhost:5432/ti_ticket"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/ti-ticket"
 
 # NextAuth
 NEXTAUTH_SECRET="sua-chave-secreta-gerada-aqui"
